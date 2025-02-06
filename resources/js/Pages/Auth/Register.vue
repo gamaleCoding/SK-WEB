@@ -1,107 +1,108 @@
 <script setup>
-  import GuestLayout from '@/Layouts/GuestLayout.vue'
-  import InputError from '@/Components/InputError.vue'
-  import InputLabel from '@/Components/InputLabel.vue'
-  import PrimaryButton from '@/Components/PrimaryButton.vue'
-  import TextInput from '@/Components/TextInput.vue'
-  import { Head, Link, useForm } from '@inertiajs/vue3'
+import GuestLayout from '@/Layouts/GuestLayout.vue'
+import InputError from '@/Components/InputError.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import TextInput from '@/Components/TextInput.vue'
+import { Head, Link, useForm } from '@inertiajs/vue3'
 
-  const form = useForm({
+const form = useForm({
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
-  })
+})
 
-  const submit = () => {
+const submit = () => {
     form.post(route('register'), {
-      onFinish: () => form.reset('password', 'password_confirmation'),
+        onFinish: () => form.reset('password', 'password_confirmation'),
     })
-  }
+}
 </script>
 
 <template>
-  <GuestLayout>
-    <Head title="Register" />
+    <GuestLayout>
 
-    <form @submit.prevent="submit">
-      <div>
-        <InputLabel for="name" value="Name" />
+        <Head title="Register" />
 
-        <TextInput
-          id="name"
-          type="text"
-          class="mt-1 block w-full"
-          v-model="form.name"
-          required
-          autofocus
-          autocomplete="name"
-        />
+        <div class="flex w-full min-h-screen items-center justify-center">
+            <div class="grid w-full max-w-5xl grid-cols-1 gap-6 bg-white p-8 shadow-lg sm:grid-cols-2 rounded-lg">
+                <!-- Left Side: Image Background -->
+                <div class="relative sm:block">
+                    <img v-if="!form.name && !form.email && !form.password"
+                        src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWRleGZ2N2wza294Nm5qZzJrdmNtYzBud2xvMDUxZ3JsbGZsMG1ubSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SpopD7IQN2gK3qN4jS/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Register Animation" />
+                    <img v-else-if="form.name || form.email || form.password"
+                        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2RmZHlvaDJqOW9rbjViem1iZTRneDRzZGd5emxyMGVpdm5hNDRvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Gp7eaYbWaOtdpBrFm/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Register Animation" />
+                    <img v-else-if="form.errors.name || form.errors.email || form.errors.password"
+                        src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2tnOG93NmcweG00eGQyM29hejlrYmc3eGdkZnhmd2kyY2Y2Z21xbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NTEyfNzEmOSlEmiVVM/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Error Animation" />
+                </div>
 
-        <InputError class="mt-2" :message="form.errors.name" />
-      </div>
+                <!-- Right Side: Register Form -->
+                <div class="flex flex-col justify-center items-center">
+                    <!-- back button  -->
+                    <div class="mb-6 text-center">
+                        <div class="text-orange-600 font-bold">
+                            <Link :href="route('welcome')">Back to Welcome Page</Link>
+                        </div>
+                        <!-- sk logo  -->
+                        <div class="flex justify-center items-center direction-column mt-10">
+                            <img src="/images/sk.webp" class="w-12 h-12" />
+                        </div>
+                        <div class="mt-2">
+                            <h2 class="text-2xl font-bold text-gray-700">Welcome</h2>
+                            <p class="text-gray-600">Create an account to get started</p>
+                        </div>
+                    </div>
 
-      <div class="mt-4">
-        <InputLabel for="email" value="Email" />
+                    <form @submit.prevent="submit">
+                        <!-- Name -->
+                        <div>
+                            <InputLabel for="name" value="Name" />
+                            <TextInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required
+                                autofocus autocomplete="name" />
+                            <InputError class="mt-2" :message="form.errors.name" />
+                        </div>
 
-        <TextInput
-          id="email"
-          type="email"
-          class="mt-1 block w-full"
-          v-model="form.email"
-          required
-          autocomplete="username"
-        />
+                        <!-- Email -->
+                        <div class="mt-4">
+                            <InputLabel for="email" value="Email" />
+                            <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required
+                                autocomplete="username" />
+                            <InputError class="mt-2" :message="form.errors.email" />
+                        </div>
 
-        <InputError class="mt-2" :message="form.errors.email" />
-      </div>
+                        <!-- Password -->
+                        <div class="mt-4">
+                            <InputLabel for="password" value="Password" />
+                            <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password"
+                                required autocomplete="new-password" />
+                            <InputError class="mt-2" :message="form.errors.password" />
+                        </div>
 
-      <div class="mt-4">
-        <InputLabel for="password" value="Password" />
+                        <!-- Confirm Password -->
+                        <div class="mt-4">
+                            <InputLabel for="password_confirmation" value="Confirm Password" />
+                            <TextInput id="password_confirmation" type="password" class="mt-1 block w-full"
+                                v-model="form.password_confirmation" required autocomplete="new-password" />
+                            <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                        </div>
 
-        <TextInput
-          id="password"
-          type="password"
-          class="mt-1 block w-full"
-          v-model="form.password"
-          required
-          autocomplete="new-password"
-        />
+                        <!-- Register Button -->
+                        <div class="mt-4 flex items-center justify-between">
+                            <Link class="text-gray-700 underline" :href="route('login')"> Already have account?
+                            </Link>
+                            <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }"
+                                :disabled="form.processing">
+                                Register
+                            </PrimaryButton>
+                        </div>
 
-        <InputError class="mt-2" :message="form.errors.password" />
-      </div>
-
-      <div class="mt-4">
-        <InputLabel for="password_confirmation" value="Confirm Password" />
-
-        <TextInput
-          id="password_confirmation"
-          type="password"
-          class="mt-1 block w-full"
-          v-model="form.password_confirmation"
-          required
-          autocomplete="new-password"
-        />
-
-        <InputError class="mt-2" :message="form.errors.password_confirmation" />
-      </div>
-
-      <div class="mt-4 flex items-center justify-end">
-        <Link
-          :href="route('login')"
-          class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-        >
-          Already registered?
-        </Link>
-
-        <PrimaryButton
-          class="ms-4"
-          :class="{ 'opacity-25': form.processing }"
-          :disabled="form.processing"
-        >
-          Register
-        </PrimaryButton>
-      </div>
-    </form>
-  </GuestLayout>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </GuestLayout>
 </template>

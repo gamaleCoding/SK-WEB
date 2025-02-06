@@ -17,7 +17,7 @@ defineProps({
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <img src="/images/sk.webp" alt="SK OWAC Icon" class="h-10 w-10" />
-                    <div class="text-lg font-semibold text-gray-700">SK OWAC</div>
+                    <div class="text-lg font-semibold text-gray-700">OWAC</div>
                 </div>
                 <div class="flex space-x-4">
                     <Link v-if="$page.props.auth.user" :href="route('dashboard')"

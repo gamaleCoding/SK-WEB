@@ -1,61 +1,84 @@
 <script setup>
-  import GuestLayout from '@/Layouts/GuestLayout.vue'
-  import InputError from '@/Components/InputError.vue'
-  import InputLabel from '@/Components/InputLabel.vue'
-  import PrimaryButton from '@/Components/PrimaryButton.vue'
-  import TextInput from '@/Components/TextInput.vue'
-  import { Head, useForm } from '@inertiajs/vue3'
+import GuestLayout from '@/Layouts/GuestLayout.vue'
+import InputError from '@/Components/InputError.vue'
+import InputLabel from '@/Components/InputLabel.vue'
+import PrimaryButton from '@/Components/PrimaryButton.vue'
+import TextInput from '@/Components/TextInput.vue'
+import { Head, Link, useForm } from '@inertiajs/vue3'
 
-  defineProps({
+defineProps({
     status: {
-      type: String,
+        type: String,
     },
-  })
+})
 
-  const form = useForm({
+const form = useForm({
     email: '',
-  })
+})
 
-  const submit = () => {
+const submit = () => {
     form.post(route('password.email'))
-  }
+}
 </script>
 
 <template>
-  <GuestLayout>
-    <Head title="Forgot Password" />
+    <GuestLayout>
 
-    <div class="mb-4 text-sm text-gray-600">
-      Forgot your password? No problem. Just let us know your email address and we will email you a
-      password reset link that will allow you to choose a new one.
-    </div>
+        <Head title="Forgot Password" />
 
-    <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-      {{ status }}
-    </div>
+        <div class="flex w-full min-h-screen items-center justify-center">
+            <div class="grid w-full max-w-4xl grid-cols-1 gap-6 sm:grid-cols-2 bg-white p-8 shadow-lg sm:rounded-lg">
+                <!-- Left Side: Image Background -->
+                <div class="relative sm:block">
+                    <img v-if="!form.email"
+                        src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFkZXc1Yng3ZnZ2bWd0eThwam9ydDZqOWh1ZWxjeHo3NnBkY2x4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/q3w1IdISgxTzWUN80b/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Forgot Password Animation" />
+                    <img v-else
+                        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2RmZHlvaDJqOW9rbjViem1iZTRneDRzZGd5emxyMGVpdm5hNDRvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Gp7eaYbWaOtdpBrFm/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Forgot Password Animation" />
+                </div>
 
-    <form @submit.prevent="submit">
-      <div>
-        <InputLabel for="email" value="Email" />
+                <!-- Right Side: Reset Password Form -->
+                <div class="flex flex-col justify-center items-center">
+                    <div class="mb-6 text-center">
+                        <div class="text-orange-600 font-bold">
+                            <Link :href="route('welcome')">Back to Welcome Page</Link>
+                        </div>
+                        <!-- sk logo -->
+                        <div class="flex justify-center items-center direction-column mt-10">
+                            <img src="/images/sk.webp" class="w-12 h-12" />
+                        </div>
+                        <div class="mt-2">
+                            <h2 class="text-2xl font-bold text-gray-700">Forgot Your Password?</h2>
+                            <p class="text-gray-600">Enter your email address to receive a password reset link.</p>
+                        </div>
+                    </div>
 
-        <TextInput
-          id="email"
-          type="email"
-          class="mt-1 block w-full"
-          v-model="form.email"
-          required
-          autofocus
-          autocomplete="username"
-        />
+                    <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+                        {{ status }}
+                    </div>
 
-        <InputError class="mt-2" :message="form.errors.email" />
-      </div>
+                    <form @submit.prevent="submit" class="w-full">
+                        <!-- Email -->
+                        <div>
+                            <InputLabel for="email" value="Email" />
+                            <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required
+                                autofocus autocomplete="username" />
+                            <InputError class="mt-2" :message="form.errors.email" />
+                        </div>
 
-      <div class="mt-4 flex items-center justify-end">
-        <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-          Email Password Reset Link
-        </PrimaryButton>
-      </div>
-    </form>
-  </GuestLayout>
+                        <!-- Reset Button -->
+                        <div class="mt-4 flex items-center justify-end gap-4">
+                            <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                                Email Password Reset Link
+                            </PrimaryButton>
+                            <Link class="text-red-600 font-bold text-lg" :href="route('welcome')">
+                            Cancel
+                            </Link>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </GuestLayout>
 </template>
