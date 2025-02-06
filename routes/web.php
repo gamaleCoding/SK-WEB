@@ -12,7 +12,7 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -24,4 +24,32 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/home', function () {
+    return Inertia::render('ViewersPage/Home');
+})->name('home');
+
+Route::get('/about-sk', function () {
+    return Inertia::render('ViewersPage/About-Sk');
+})->name('about_sk');
+
+Route::get('/programs-projects', function(){
+    return Inertia::render('ViewersPage/Programs-projects');
+})->name('programs_projects');
+
+Route::get('/events', function(){
+    return Inertia::render('ViewersPage/Events');
+})->name('events');
+
+Route::get('/news-updates', function(){
+    return Inertia::render('ViewersPage/News-update');
+})->name('news_update');
+
+Route::get('/get-involved', function(){
+    return Inertia::render('ViewersPage/Get-involved');
+})->name('get_involved');
+
+Route::get('/youth-council', function(){
+    return Inertia::render('ViewersPage/Youth-council');
+})->name('youth_council');
+
+require __DIR__ . '/auth.php';
