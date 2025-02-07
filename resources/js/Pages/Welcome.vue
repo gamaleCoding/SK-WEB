@@ -16,22 +16,25 @@ defineProps({
         <header class="bg-white shadow-sm">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
                 <div class="flex items-center space-x-2">
-                    <img src="/images/sk.webp" alt="SK OWAC Icon" class="h-10 w-10" />
-                    <div class="text-lg font-semibold text-gray-700">OWAC</div>
+                    <img src="/images/sk.webp" alt="SK OWAC Icon" class="h-8 w-8 md:h-10 md:w-10" />
+                    <div class="text-xl md:text-2xl font-bold text-gray-700">OWAC</div>
                 </div>
                 <div class="flex space-x-4">
-                    <Link v-if="$page.props.auth.user" :href="route('dashboard')"
+                    <Link v-if="$page.props.auth.user" :href="route('landing_page')"
                         class="text-blue-600 hover:text-blue-800">
                     Dashboard
                     </Link>
                     <template v-else>
-                        <Link :href="route('login')" class="text-gray-600 font-bold text-lg hover:text-gray-700">
-                        Log in
-                        </Link>
-                        <Link v-if="canRegister" :href="route('register')"
-                            class="text-orange-500 font-bold text-lg hover:text-orange-600">
-                        Register
-                        </Link>
+                        <div class="flex flex-wrap gap-2">
+                            <Link :href="route('login')"
+                                class="bg-orange-600 text-white font-bold px-4 py-2 rounded-lg hover:bg-orange-700 transition duration-300">
+                            Log in
+                            </Link>
+                            <Link v-if="canRegister" :href="route('register')"
+                                class="bg-gray-600 font-bold text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300">
+                            Register
+                            </Link>
+                        </div>
                     </template>
                 </div>
             </nav>
@@ -59,8 +62,8 @@ defineProps({
                                 fill="currentColor">
                             </path>
                         </svg>
-                        <Link :href="route('home')">
-                        Visit Full Website
+                        <Link :href="route('landing_page')">
+                        Explore Full Website
                         </Link>
                     </button>
                 </div>
@@ -68,7 +71,7 @@ defineProps({
             </section>
             <!-- Carousel  -->
             <section>
-                <n-carousel autoplay class="h-96">
+                <n-carousel autoplay class="h-48 md:h-96">
                     <img class="w-full h-full object-cover" src="/images/newfarm.jpg" alt="Image 1">
                     <img class="w-full h-full object-cover" src="/images/hagdanrice.jpg" alt="Image 2">
                     <img class="w-full h-full object-cover" src="/images/loboc.jpg" alt="Image 3">
@@ -79,25 +82,25 @@ defineProps({
             <!-- Call to Action Section -->
             <section class="text-center mt-10">
                 <div class="flex flex-wrap justify-center gap-10">
-                    <button
+                    <Link :href="route"
                         class="text-lg  text-orange-600 font-bold flex items-center justify-center gap-2 hover:text-orange-700">
-                        Join Us
-                    </button>
-                    <button
+                    Join Us
+                    </Link>
+                    <Link :href="route"
                         class="text-lg text-orange-600 font-bold flex items-center justify-center gap-2 hover:text-orange-700">
-                        Get Involved
-                    </button>
-                    <button
+                    Get Involved
+                    </Link>
+                    <Link :href="route"
                         class="text-lg text-orange-600 font-bold flex items-center justify-center gap-2 hover:text-orange-700">
-                        Learn More
-                    </button>
+                    Learn More
+                    </Link>
                 </div>
             </section>
 
             <!-- Image Cards Section -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 mt-10">
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <n-carousel autoplay class="w-full h-80 ">
+                    <n-carousel autoplay class="w-full h-48 md:h-80">
                         <img class="w-full h-full object-cover" src="/images/corevalues.webp">
                         <img class="w-full h-full object-cover" src="/images/search.webp">
                         <img class="w-full h-full object-cover" src="/images/purpose.webp">
@@ -107,14 +110,14 @@ defineProps({
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Discover our mission and values.</p>
                     <Link :href="route('home')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
-                            <path
-                                d="M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68zM16 25c-5.3 0-10.9-3.93-12.93-9C5.1 10.93 10.7 7 16 7s10.9 3.93 12.93 9C26.9 21.07 21.3 25 16 25z"
-                                fill="currentColor"></path>
-                            <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
-                                fill="currentColor">
-                            </path>
-                        </svg> View More </Link>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
+                        <path
+                            d="M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68zM16 25c-5.3 0-10.9-3.93-12.93-9C5.1 10.93 10.7 7 16 7s10.9 3.93 12.93 9C26.9 21.07 21.3 25 16 25z"
+                            fill="currentColor"></path>
+                        <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
+                            fill="currentColor">
+                        </path>
+                    </svg> View More </Link>
                 </div>
 
                 <!-- Champion and Leaders  -->
@@ -129,14 +132,14 @@ defineProps({
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Celebrate our champions and leaders.</p>
                     <Link :href="route('events')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
-                            <path
-                                d="M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68zM16 25c-5.3 0-10.9-3.93-12.93-9C5.1 10.93 10.7 7 16 7s10.9 3.93 12.93 9C26.9 21.07 21.3 25 16 25z"
-                                fill="currentColor"></path>
-                            <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
-                                fill="currentColor">
-                            </path>
-                        </svg> View More</Link>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
+                        <path
+                            d="M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68zM16 25c-5.3 0-10.9-3.93-12.93-9C5.1 10.93 10.7 7 16 7s10.9 3.93 12.93 9C26.9 21.07 21.3 25 16 25z"
+                            fill="currentColor"></path>
+                        <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
+                            fill="currentColor">
+                        </path>
+                    </svg> View More</Link>
                 </div>
 
                 <!-- Engage in exciting community events  -->
@@ -155,14 +158,14 @@ defineProps({
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Engage in exciting community events.</p>
                     <Link :href="route('programs_projects')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
-                            <path
-                                d="M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68zM16 25c-5.3 0-10.9-3.93-12.93-9C5.1 10.93 10.7 7 16 7s10.9 3.93 12.93 9C26.9 21.07 21.3 25 16 25z"
-                                fill="currentColor"></path>
-                            <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
-                                fill="currentColor">
-                            </path>
-                        </svg> View More</Link>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
+                        <path
+                            d="M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68zM16 25c-5.3 0-10.9-3.93-12.93-9C5.1 10.93 10.7 7 16 7s10.9 3.93 12.93 9C26.9 21.07 21.3 25 16 25z"
+                            fill="currentColor"></path>
+                        <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
+                            fill="currentColor">
+                        </path>
+                    </svg> View More</Link>
                 </div>
 
                 <!-- Work towards youth empowerment  -->
@@ -181,18 +184,18 @@ defineProps({
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Work towards youth empowerment.</p>
                     <Link :href="route('get_involved')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
-                            <path
-                                d="M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68zM16 25c-5.3 0-10.9-3.93-12.93-9C5.1 10.93 10.7 7 16 7s10.9 3.93 12.93 9C26.9 21.07 21.3 25 16 25z"
-                                fill="currentColor"></path>
-                            <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
-                                fill="currentColor">
-                            </path>
-                        </svg> View More</Link>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
+                        <path
+                            d="M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68zM16 25c-5.3 0-10.9-3.93-12.93-9C5.1 10.93 10.7 7 16 7s10.9 3.93 12.93 9C26.9 21.07 21.3 25 16 25z"
+                            fill="currentColor"></path>
+                        <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
+                            fill="currentColor">
+                        </path>
+                    </svg> View More</Link>
                 </div>
             </section>
             <section>
-                <p class="text-gray-800 max-w-2xl mx-auto text-lg mb-4">
+                <p class="text-base md:text-lg text-gray-800 max-w-2xl mx-auto text-lg mb-4">
                     Together, we grow, learn, and lead! SK WEB is a space where young
                     leaders and the community unite to make meaningful changes. For concern,
                     <Link :href="route('concerns')" class="text-orange-600 hover:text-orange-700 underline">click here
@@ -256,6 +259,34 @@ defineProps({
                         </li>
                     </ul>
                 </div>
+                <div class="mt-10 text-center text-gray-600 text-sm">
+                    <p class="text-lg font-semibold">Theme and design inspired by</p>
+                    <p class="text-lg font-extrabold text-orange-600">Squid Game</p>
+
+                    <p class="mt-3 max-w-lg mx-auto">
+                        This project is a fan-based design influenced by the aesthetics of Squid Game.
+                        All rights belong to their respective owners.
+                    </p>
+
+                    <hr class="my-6 border-gray-400 opacity-50 w-2/3 mx-auto">
+
+                    <p class="text-lg font-semibold">Special Thanks To:</p>
+
+                    <div class="flex flex-wrap justify-center gap-4 mt-4">
+                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
+                            Ant Design Vue
+                        </span>
+                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
+                            Naive UI
+                        </span>
+                    </div>
+
+                    <p class="mt-6 text-sm text-gray-500 italic">
+                        This project is powered by <span class="font-bold text-gray-700">Laravel</span> &
+                        <span class="font-bold text-gray-700">Vue.js</span>.
+                    </p>
+                </div>
+
             </div>
         </footer>
     </div>

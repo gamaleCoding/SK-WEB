@@ -58,13 +58,14 @@ const submit = () => {
                 <div v-if="!showLoginImage" class="flex flex-col justify-center items-center">
                     <!-- back button  -->
                     <div class="mb-6 text-center">
-                        <div class="text-orange-600 font-bold">
+                        <!-- <button
+                            class="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition duration-300">
                             <Link :href="route('welcome')">Back to Welcome Page</Link>
-                        </div>
+                        </button> -->
                         <!-- sk logo  -->
-                        <div class="flex justify-center items-center direction-column mt-10">
-                            <img src="/images/sk.webp" class="w-12 h-12" />
-                        </div>
+                        <Link :href="route('welcome')" class="flex justify-center items-center direction-column">
+                        <img src="/images/sk.webp" class="w-12 h-12" />
+                        </Link>
                         <div class="mt-2">
                             <h2 class="text-2xl font-bold text-gray-700">Welcome Back</h2>
                             <p class="text-gray-600">Log in to continue</p>

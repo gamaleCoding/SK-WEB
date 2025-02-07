@@ -13,6 +13,9 @@ import { Head } from '@inertiajs/vue3'
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
+                        <div>
+                            <Link></Link>
+                        </div>
                         <div class="flex justify-center">
                             <img class="w-full max-w-2xl rounded-lg"
                                 src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjBqamw0d3hmYXlkcmpiazNxZTRhZTI1cWV0NGtjc3JuZ3FqcnZweiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PAqjdPkJLDsmBRSYUp/giphy.gif"
@@ -163,5 +166,6 @@ import { Head } from '@inertiajs/vue3'
         height: 24rem;
         /* Adjust height for larger screens */
     }
+
 }
 </style>

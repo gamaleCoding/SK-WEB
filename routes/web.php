@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/welcome', function () {
+    return Inertia::render('ViewersPage/Landing-page');
+})->name('landing_page');
+
 Route::get('/home', function () {
     return Inertia::render('ViewersPage/Home');
 })->name('home');
@@ -32,27 +36,27 @@ Route::get('/about-sk', function () {
     return Inertia::render('ViewersPage/About-Sk');
 })->name('about_sk');
 
-Route::get('/programs-projects', function(){
+Route::get('/programs-projects', function () {
     return Inertia::render('ViewersPage/Programs-projects');
 })->name('programs_projects');
 
-Route::get('/events', function(){
+Route::get('/events', function () {
     return Inertia::render('ViewersPage/Events');
 })->name('events');
 
-Route::get('/news-updates', function(){
+Route::get('/news-updates', function () {
     return Inertia::render('ViewersPage/News-update');
 })->name('news_update');
 
-Route::get('/get-involved', function(){
+Route::get('/get-involved', function () {
     return Inertia::render('ViewersPage/Get-involved');
 })->name('get_involved');
 
-Route::get('/youth-council', function(){
+Route::get('/youth-council', function () {
     return Inertia::render('ViewersPage/Youth-council');
 })->name('youth_council');
 
-Route::get('/concerns', function(){
+Route::get('/concerns', function () {
     return Inertia::render('ViewersPage/Concerns');
 })->name('concerns');
 
