@@ -5,7 +5,7 @@ import InputError from '@/Components/InputError.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import TextInput from '@/Components/TextInput.vue'
-import { Head, Link, useForm } from '@inertiajs/vue3'
+import { Head, Link, router, useForm } from '@inertiajs/vue3'
 
 defineProps({
     canResetPassword: {
@@ -24,7 +24,9 @@ const form = useForm({
 
 const submit = () => {
     form.post(route('login'), {
-        onFinish: () => form.reset('password'),
+        onFinish: () => {
+            form.reset('password');
+        },
     })
 }
 </script>
@@ -39,23 +41,25 @@ const submit = () => {
                 <!-- Left Side: Image Background -->
                 <div class="relative sm:block">
                     <img v-if="!form.email && !form.password"
-                        src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFkZXc1Yng3ZnZ2bWd0eThwam9ydDZqOWh1ZWxjeHo3NnBkY2x4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/q3w1IdISgxTzWUN80b/giphy.gif"
-                        class="h-full w-full object-cover rounded-lg" alt="Login Animation" />
-                    <img v-else-if="form.email || form.password"
-                        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2RmZHlvaDJqOW9rbjViem1iZTRneDRzZGd5emxyMGVpdm5hNDRvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Gp7eaYbWaOtdpBrFm/giphy.gif"
+                        src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXA2d3ZrZnNlMXBod2IwOWRzeGJ5NHVkbHVneTh3OTB5Y2Q4bjJ6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PAqjdPkJLDsmBRSYUp/giphy.gif"
                         class="h-full w-full object-cover rounded-lg" alt="Login Animation" />
                     <img v-else-if="form.errors.email || form.errors.password"
-                        src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2tnOG93NmcweG00eGQyM29hejlrYmc3eGdkZnhmd2kyY2Y2Z21xbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NTEyfNzEmOSlEmiVVM/giphy.gif"
+                        src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3k3dHMzcGpmNXdnNXB1cXo3eGRwb3RhbHpsZWxsdnV5bDB2ZTkzbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/i7PFn5ihZdn8cD9Cwa/giphy.gif"
                         class="h-full w-full object-cover rounded-lg" alt="Error Animation" />
+                    <img v-else-if="form.password"
+                        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2RmZHlvaDJqOW9rbjViem1iZTRneDRzZGd5emxyMGVpdm5hNDRvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Gp7eaYbWaOtdpBrFm/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Login Animation" />
+                    <img v-else-if="form.email"
+                        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2RmZHlvaDJqOW9rbjViem1iZTRneDRzZGd5emxyMGVpdm5hNDRvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Gp7eaYbWaOtdpBrFm/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Login Animation" />
                 </div>
 
                 <!-- Right Side: Login Form -->
-                <div class="flex flex-col justify-center items-center">
+                <div v-if="!showLoginImage" class="flex flex-col justify-center items-center">
                     <!-- back button  -->
                     <div class="mb-6 text-center">
                         <div class="text-orange-600 font-bold">
                             <Link :href="route('welcome')">Back to Welcome Page</Link>
-
                         </div>
                         <!-- sk logo  -->
                         <div class="flex justify-center items-center direction-column mt-10">

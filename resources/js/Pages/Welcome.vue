@@ -62,7 +62,6 @@ defineProps({
                         <Link :href="route('home')">
                         Visit Full Website
                         </Link>
-                        <!-- <span>Visit Full Website</span> -->
                     </button>
                 </div>
 
@@ -106,7 +105,7 @@ defineProps({
                     </n-carousel>
                     <!-- <img src="/images/about.webp" alt="About" class="w-full max-w-xs md:max-w-sm h-auto" /> -->
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Discover our mission and values.</p>
-                    <button
+                    <Link :href="route('home')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
                             <path
@@ -115,7 +114,7 @@ defineProps({
                             <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
                                 fill="currentColor">
                             </path>
-                        </svg> View More </button>
+                        </svg> View More </Link>
                 </div>
 
                 <!-- Champion and Leaders  -->
@@ -128,7 +127,7 @@ defineProps({
                     </n-carousel>
                     <!-- <img src="/images/champion.webp" alt="Champion" class="w-full max-w-xs md:max-w-sm h-auto" /> -->
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Celebrate our champions and leaders.</p>
-                    <button
+                    <Link :href="route('events')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
                             <path
@@ -137,7 +136,7 @@ defineProps({
                             <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
                                 fill="currentColor">
                             </path>
-                        </svg> View More</button>
+                        </svg> View More</Link>
                 </div>
 
                 <!-- Engage in exciting community events  -->
@@ -154,7 +153,7 @@ defineProps({
                             src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG9ubGJianM4NGF2MzN1amtmbTdrdmp2dmUzNnVuN2pzM2c2ZWVibiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13sozYO4hmSMUw/giphy.gif">
                     </n-carousel>
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Engage in exciting community events.</p>
-                    <button
+                    <Link :href="route('programs_projects')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
                             <path
@@ -163,7 +162,7 @@ defineProps({
                             <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
                                 fill="currentColor">
                             </path>
-                        </svg> View More</button>
+                        </svg> View More</Link>
                 </div>
 
                 <!-- Work towards youth empowerment  -->
@@ -180,7 +179,7 @@ defineProps({
                             src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG41ZTJnY25xcTJ2cjVrbnd4aHRxaGc1d2ZnZ3BjZGJwMzhkZndjdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h8IcERBmFXChSSKlNI/giphy.gif">
                     </n-carousel>
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Work towards youth empowerment.</p>
-                    <button
+                    <Link :href="route('get_involved')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
                             <path
@@ -189,14 +188,15 @@ defineProps({
                             <path d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6zm0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4z"
                                 fill="currentColor">
                             </path>
-                        </svg> View More</button>
+                        </svg> View More</Link>
                 </div>
             </section>
             <section>
                 <p class="text-gray-800 max-w-2xl mx-auto text-lg mb-4">
                     Together, we grow, learn, and lead! SK WEB is a space where young
                     leaders and the community unite to make meaningful changes. For concern,
-                    <Link class="text-orange-600 hover:text-orange-700 underline">click here</Link>
+                    <Link :href="route('concerns')" class="text-orange-600 hover:text-orange-700 underline">click here
+                    </Link>
                 </p>
             </section>
         </main>

@@ -52,4 +52,8 @@ Route::get('/youth-council', function(){
     return Inertia::render('ViewersPage/Youth-council');
 })->name('youth_council');
 
+Route::get('/concerns', function(){
+    return Inertia::render('ViewersPage/Concerns');
+})->name('concerns');
+
 require __DIR__ . '/auth.php';

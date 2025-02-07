@@ -30,14 +30,17 @@ const submit = () => {
                 <!-- Left Side: Image Background -->
                 <div class="relative sm:block">
                     <img v-if="!form.name && !form.email && !form.password"
-                        src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWRleGZ2N2wza294Nm5qZzJrdmNtYzBud2xvMDUxZ3JsbGZsMG1ubSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/SpopD7IQN2gK3qN4jS/giphy.gif"
+                        src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXA2d3ZrZnNlMXBod2IwOWRzeGJ5NHVkbHVneTh3OTB5Y2Q4bjJ6ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PAqjdPkJLDsmBRSYUp/giphy.gif"
                         class="h-full w-full object-cover rounded-lg" alt="Register Animation" />
-                    <img v-else-if="form.name || form.email || form.password"
+                    <img v-else-if="form.name"
                         src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2RmZHlvaDJqOW9rbjViem1iZTRneDRzZGd5emxyMGVpdm5hNDRvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Gp7eaYbWaOtdpBrFm/giphy.gif"
                         class="h-full w-full object-cover rounded-lg" alt="Register Animation" />
-                    <img v-else-if="form.errors.name || form.errors.email || form.errors.password"
-                        src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2tnOG93NmcweG00eGQyM29hejlrYmc3eGdkZnhmd2kyY2Y2Z21xbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NTEyfNzEmOSlEmiVVM/giphy.gif"
-                        class="h-full w-full object-cover rounded-lg" alt="Error Animation" />
+                    <img v-else-if="form.email"
+                        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2RmZHlvaDJqOW9rbjViem1iZTRneDRzZGd5emxyMGVpdm5hNDRvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Gp7eaYbWaOtdpBrFm/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Register Animation" />
+                    <img v-else-if="form.password"
+                        src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2RmZHlvaDJqOW9rbjViem1iZTRneDRzZGd5emxyMGVpdm5hNDRvNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Gp7eaYbWaOtdpBrFm/giphy.gif"
+                        class="h-full w-full object-cover rounded-lg" alt="Register Animation" />
                 </div>
 
                 <!-- Right Side: Register Form -->
