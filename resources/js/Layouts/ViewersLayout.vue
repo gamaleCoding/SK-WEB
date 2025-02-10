@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import ApplicationLogo from '@/Components/ApplicationLogo.vue'
 import Dropdown from '@/Components/Dropdown.vue'
 import DropdownLink from '@/Components/DropdownLink.vue'
@@ -9,12 +9,49 @@ import { Link } from '@inertiajs/vue3'
 import dayjs from 'dayjs'
 
 const showingNavigationDropdown = ref(false)
+const navBar = ref(null);
+const scrollButton = ref(false);
+
+const scrollUp = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+const showScrollButton = () => {
+    scrollButton.value = window.scrollY > 200;
+};
+const handleScroll = () => {
+    showScrollButton();
+    if (navBar.value) {
+        if (window.scrollY > 50) {
+            navBar.value.classList.add('scrolled');
+        } else {
+            navBar.value.classList.remove('scrolled');
+        }
+    }
+};
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+});
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+});
+
 </script>
 
 <template>
     <div>
+        <!-- Scroll Up button  -->
+        <button @click="scrollUp" v-if="scrollButton" class="button">
+            <svg class="svgIcon" viewBox="0 0 384 512">
+                <path
+                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z">
+                </path>
+            </svg>
+        </button>
+    </div>
+    <div>
         <div class="min-h-screen bg-gray-100">
-            <nav class="border-b border-gray-100 bg-white">
+            <nav ref="navBar" class="sticky top-0 z-40 bg-white border-b border-gray-100 transition-all duration-300">
                 <!-- Primary Navigation Menu -->
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div class="flex h-16 justify-between">
@@ -44,7 +81,7 @@ const showingNavigationDropdown = ref(false)
                                 <NavLink :href="route('news_update')" :active="route().current('news_update')">
                                     Updates
                                 </NavLink>
-                                <NavLink :href="route('get_involved')" :active="route().current('get_involved')">
+                                <NavLink :href="route('resources')" :active="route().current('resources')">
                                     Resources
                                 </NavLink>
                                 <NavLink :href="route('youth_council')" :active="route().current('youth_council')">
@@ -136,7 +173,7 @@ const showingNavigationDropdown = ref(false)
                         <ResponsiveNavLink :href="route('news_update')" :active="route().current('news_update')">
                             Updates
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink :href="route('get_involved')" :active="route().current('get_involved')">
+                        <ResponsiveNavLink :href="route('resources')" :active="route().current('resources')">
                             Resources
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('youth_council')" :active="route().current('youth_council')">
@@ -191,7 +228,7 @@ const showingNavigationDropdown = ref(false)
         <footer class="bg-white py-10 mb-0">
             <div class="container mx-auto px-6 text-center">
                 <p class="text-gray-800 text-lg">
-                    &copy; 2024 - {{ dayjs().year() }} SK Web. All rights reserved.
+                    &copy; 2024 - {{ dayjs().year() }} SK-OWAC Web. All rights reserved.
                 </p>
                 <div>
                     <ul class="flex justify-center mt-5 space-x-5">
@@ -246,3 +283,62 @@ const showingNavigationDropdown = ref(false)
         </footer>
     </div>
 </template>
+<style scoped>
+/* scroll up css  */
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: fixed;
+    bottom: 2rem;
+    right: 1rem;
+    z-index: 1000;
+}
+
+.svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.button:hover {
+    width: 140px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    /* background-color: darkorange; */
+    align-items: center;
+}
+
+.button:hover .svgIcon {
+    transition-duration: 0.3s;
+    transform: translateY(-200%);
+}
+
+.button::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Back to Top";
+    color: white;
+    font-size: 0px;
+}
+
+.button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition-duration: 0.3s;
+}
+</style>

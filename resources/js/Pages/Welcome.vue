@@ -182,7 +182,7 @@ defineProps({
                             src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG41ZTJnY25xcTJ2cjVrbnd4aHRxaGc1d2ZnZ3BjZGJwMzhkZndjdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h8IcERBmFXChSSKlNI/giphy.gif">
                     </n-carousel>
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Work towards youth empowerment.</p>
-                    <Link :href="route('get_involved')"
+                    <Link :href="route('resources')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5">
                         <path
@@ -208,7 +208,7 @@ defineProps({
         <footer class="bg-gray-100 py-10 mt-12">
             <div class="container mx-auto px-6 text-center">
                 <p class="text-gray-800 text-lg">
-                    &copy; 2024 - {{ dayjs().year() }} SK Web. All rights reserved.
+                    &copy; 2024 - {{ dayjs().year() }} SK-OWAC Web. All rights reserved.
                 </p>
                 <div>
                     <ul class="flex justify-center mt-5 space-x-5">
@@ -260,11 +260,11 @@ defineProps({
                     </ul>
                 </div>
                 <div class="mt-10 text-center text-gray-600 text-sm">
-                    <p class="text-lg font-semibold">Theme and design inspired by</p>
+                    <p class="text-lg font-semibold">Some theme and design inspired by</p>
                     <p class="text-lg font-extrabold text-orange-600">Squid Game</p>
 
                     <p class="mt-3 max-w-lg mx-auto">
-                        This project is a fan-based design influenced by the aesthetics of Squid Game.
+                        This website is a fan-based design influenced by the aesthetics of Squid Game.
                         All rights belong to their respective owners.
                     </p>
 
@@ -279,12 +279,19 @@ defineProps({
                         <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
                             Naive UI
                         </span>
+                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
+                            UI Verse.io
+                        </span>
                     </div>
 
                     <p class="mt-6 text-sm text-gray-500 italic">
-                        This project is powered by <span class="font-bold text-gray-700">Laravel</span> &
-                        <span class="font-bold text-gray-700">Vue.js</span>.
+                        This website is powered by <span class="font-bold text-gray-700">Barangay Solidarity
+                        </span> &
+                        <span class="font-bold text-gray-700">Commitment to the Community</span>.
                     </p>
+                    <p class="mt-6 text-medium text-gray-500 italic">Made with <span
+                            class="font-bold text-gray-700">LOVE</span>
+                        by <span class="font-bold text-gray-700">Teofredo M. Gamale</span></p>
                 </div>
 
             </div>

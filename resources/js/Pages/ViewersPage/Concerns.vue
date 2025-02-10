@@ -16,14 +16,14 @@ const showModal = ref(false);
         <div class="z-10 w-full max-w-4xl p-8 bg-white bg-opacity-80 rounded-lg shadow-xl">
             <!-- GIF Section -->
             <div class="mb-8">
-                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGFkZXc1Yng3ZnZ2bWd0eThwam9ydDZqOWh1ZWxjeHo3NnBkY2x4NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/q3w1IdISgxTzWUN80b/giphy.gif"
+                <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3lncWxwNjByeG02ajU3b3h1bWcxdTg3am00MWJ0M3FhN2J6cjkyMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dwyrEX7NthbwLcxcK7/giphy.gif"
                     class="w-full max-w-sm mx-auto rounded-lg shadow-lg" alt="Angry Reaction" />
             </div>
 
             <!-- Text Section -->
             <div class="text-center mb-8">
                 <p class="text-xl font-semibold text-gray-700">WHAT'S YOUR CONCERN MY FRIEND?</p>
-                <p class="text-xl font-semibold text-red-600">I'M SO ANGRY MAN..</p>
+                <!-- <p class="text-xl font-semibold text-red-600">I'M SO ANGRY MAN..</p> -->
             </div>
 
             <!-- Links Section -->
@@ -45,7 +45,7 @@ const showModal = ref(false);
             <n-card style="width: 90%; max-width: 600px" :bordered="false" size="huge" role="dialog" aria-modal="true"
                 class="mx-auto">
                 <div class="flex flex-col items-center p-4">
-                    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzN5ZzgwNzh6bGdlbGgxNG0waXhhbzMzbnQwejJjajJ5bnloenZrdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8jQ5ZdNmWibflIs6e0/giphy.gif"
+                    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcDhwaXV0OGZpeHZtNGxraGVwZXlhaXIwa2ExamNsYXlmMDM2cHh4dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/srsxGJpohcl51cyHJg/giphy.gif"
                         class="w-full max-w-xs rounded-lg shadow-lg mb-4" alt="Polite Reaction" />
                     <p class="text-lg font-semibold text-gray-700 mb-4 text-center">
                         Please be polite and honest with your concerns

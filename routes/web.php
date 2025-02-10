@@ -48,9 +48,9 @@ Route::get('/news-updates', function () {
     return Inertia::render('ViewersPage/News-update');
 })->name('news_update');
 
-Route::get('/get-involved', function () {
-    return Inertia::render('ViewersPage/Get-involved');
-})->name('get_involved');
+Route::get('/resources', function () {
+    return Inertia::render('ViewersPage/Resources');
+})->name('resources');
 
 Route::get('/youth-council', function () {
     return Inertia::render('ViewersPage/Youth-council');
