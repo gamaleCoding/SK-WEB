@@ -4,7 +4,6 @@ import { Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import dayjs from 'dayjs';
 
-// Sample council members data
 const councilMembers = ref([
     {
         name: "GLENN BENIGA", position: "SK Chairperson", picture: "/images/profile.jpg", social: [
@@ -98,17 +97,14 @@ const councilMembers = ref([
     },
 ]);
 
-// Modal state
 const showModal = ref(false);
 const selectedMember = ref(null);
 
-// Function to open the modal
 const openModal = (member) => {
     selectedMember.value = member;
     showModal.value = true;
 };
 
-// Function to close the modal
 const closeModal = () => {
     showModal.value = false;
     selectedMember.value = null;

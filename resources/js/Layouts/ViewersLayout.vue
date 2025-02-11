@@ -50,7 +50,7 @@ onUnmounted(() => {
         </button>
     </div>
     <div>
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gradient-to-br from-orange-100 to-orange-200">
             <nav ref="navBar" class="sticky top-0 z-40 bg-white border-b border-gray-100 transition-all duration-300">
                 <!-- Primary Navigation Menu -->
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
