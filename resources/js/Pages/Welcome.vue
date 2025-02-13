@@ -14,39 +14,29 @@ defineProps({
     <div class="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
         <!-- Header -->
         <header class="bg-white shadow-sm">
-            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <div class="flex items-center space-x-2">
                     <img src="/images/sk.webp" alt="SK OWAC Icon" class="h-8 w-8 md:h-10 md:w-10" />
                     <div class="text-xl md:text-2xl font-bold text-gray-700">OWAC</div>
                 </div>
                 <div class="flex space-x-4">
-                    <Link v-if="$page.props.auth.user" :href="route('landing_page')"
-                        class="text-blue-600 hover:text-blue-800">
-                    Dashboard
-                    </Link>
-                    <template v-else>
-                        <div class="flex flex-wrap gap-2">
-                            <Link :href="route('login')"
-                                class="bg-orange-600 text-white font-bold px-4 py-2 rounded-lg hover:bg-orange-700 transition duration-300">
-                            Log in
-                            </Link>
-                            <Link v-if="canRegister" :href="route('register')"
-                                class="bg-gray-600 font-bold text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300">
-                            Register
-                            </Link>
-                        </div>
-                    </template>
+                    <div class="flex flex-wrap gap-2">
+                        <Link v-if="canLogin" :href="route('login')"
+                            class="bg-gray-600 text-white font-bold text-sm px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300">
+                        Admin Login
+                        </Link>
+                    </div>
                 </div>
             </nav>
         </header>
 
         <!-- Main Content -->
-        <main class="container mx-auto px-6 py-12">
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <section class="text-center mb-12">
                 <h1 class="text-4xl font-bold text-gray-800 mb-4 text-orange-600">
                     WELCOME TO SK OWAC WEBSITE
                 </h1>
-                <p class="text-2xl text-gray-600 max-w-3xl mx-auto">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     The official platform of the Sangguniang Kabataan. This website serves
                     as a gateway to our programs, services, and initiatives aimed at
                     fostering youth participation and development.
@@ -67,23 +57,25 @@ defineProps({
                         </Link>
                     </button>
                 </div>
-
             </section>
-            <!-- Carousel  -->
-            <section>
-                <n-carousel autoplay class="h-48 md:h-96">
-                    <img class="w-full h-full object-cover" src="/images/newfarm.jpg" alt="Image 1">
-                    <img class="w-full h-full object-cover" src="/images/hagdanrice.jpg" alt="Image 2">
-                    <img class="w-full h-full object-cover" src="/images/loboc.jpg" alt="Image 3">
-                    <img class="w-full h-full object-cover" src="/images/river.jpg" alt="Image 4">
-                </n-carousel>
+
+            <!-- Carousel -->
+            <section class="mb-12">
+                <div class="w-full h-96 overflow-hidden rounded-lg shadow-lg">
+                    <a-carousel autoplay class="w-full h-full">
+                        <img class="w-full h-full object-cover" src="/images/hagdanrice.jpg" alt="Image 1">
+                        <img class="w-full h-full object-cover" src="/images/hagdanrice.jpg" alt="Image 2">
+                        <img class="w-full h-full object-cover" src="/images/loboc.jpg" alt="Image 3">
+                        <img class="w-full h-full object-cover" src="/images/river.jpg" alt="Image 4">
+                    </a-carousel>
+                </div>
             </section>
 
             <!-- Call to Action Section -->
-            <section class="text-center mt-10">
-                <div class="flex flex-wrap justify-center gap-10">
+            <section class="text-center mt-8">
+                <div class="flex flex-wrap justify-center gap-6">
                     <Link :href="route"
-                        class="text-lg  text-orange-600 font-bold flex items-center justify-center gap-2 hover:text-orange-700">
+                        class="text-lg text-orange-600 font-bold flex items-center justify-center gap-2 hover:text-orange-700">
                     Join Us
                     </Link>
                     <Link :href="route"
@@ -100,13 +92,12 @@ defineProps({
             <!-- Image Cards Section -->
             <section class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 mt-10">
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <n-carousel autoplay class="w-full h-48 md:h-80">
-                        <img class="w-full h-full object-cover" src="/images/corevalues.webp">
-                        <img class="w-full h-full object-cover" src="/images/search.webp">
-                        <img class="w-full h-full object-cover" src="/images/purpose.webp">
-                        <img class="w-full h-full object-cover" src="/images/mission.webp">
-                    </n-carousel>
-                    <!-- <img src="/images/about.webp" alt="About" class="w-full max-w-xs md:max-w-sm h-auto" /> -->
+                    <a-carousel autoplay class="w-full h-50">
+                        <img class="w-full h-full object-cover" src="/images/dotachamp.webp">
+                        <img class="w-full h-full object-cover" src="/images/evilgenius.webp">
+                        <img class="w-full h-full object-cover" src="/images/dotachamp.webp">
+                        <img class="w-full h-full object-cover" src="/images/evilgenius.webp">
+                    </a-carousel>
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Discover our mission and values.</p>
                     <Link :href="route('home')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
@@ -122,13 +113,12 @@ defineProps({
 
                 <!-- Champion and Leaders  -->
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <n-carousel autoplay class="w-full h-80 ">
+                    <a-carousel autoplay class="w-full h-50 ">
                         <img class="w-full h-full object-cover" src="/images/dotachamp.webp">
                         <img class="w-full h-full object-cover" src="/images/evilgenius.webp">
-                        <img class="w-full h-full object-cover" src="/images/onic.webp">
-                        <img class="w-full h-full object-cover" src="/images/onicteam.webp">
-                    </n-carousel>
-                    <!-- <img src="/images/champion.webp" alt="Champion" class="w-full max-w-xs md:max-w-sm h-auto" /> -->
+                        <img class="w-full h-full object-cover" src="/images/dotachamp.webp">
+                        <img class="w-full h-full object-cover" src="/images/evilgenius.webp">
+                    </a-carousel>
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Celebrate our champions and leaders.</p>
                     <Link :href="route('events')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
@@ -144,17 +134,12 @@ defineProps({
 
                 <!-- Engage in exciting community events  -->
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <!-- <img src="/images/dotaevent.webp" alt="Dota Event" class="w-full max-w-xs md:max-w-sm h-auto" /> -->
-                    <n-carousel autoplay class="w-full h-80 ">
-                        <img class="w-full h-full object-cover"
-                            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnR2cjM2eHowYjRzZWhmZjh1eGd0NzFwejF1eGduYXNudG1vOGt4ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KC6lKX7NjnuENYEX4H/giphy.gif">
-                        <img class="w-full h-full object-cover"
-                            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjhvMnJsMGkzNW5xYzMwdnZnNmp1OTVoaDdsYjl3Z3VnYmI5cmU0eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oEdv5e5Zd2gsczAhG/giphy.gif">
-                        <img class="w-full h-full object-cover"
-                            src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcnY2ZzNsYzk5b3p1Njh1aGdoczFhb2ZyeHBvaWpqZGtyYTg0anQ5MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/dIFW6ON1oSwKmBMSXO/giphy.gif">
-                        <img class="w-full h-full object-cover"
-                            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG9ubGJianM4NGF2MzN1amtmbTdrdmp2dmUzNnVuN2pzM2c2ZWVibiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/13sozYO4hmSMUw/giphy.gif">
-                    </n-carousel>
+                    <a-carousel autoplay class="w-full h-50 ">
+                        <img class="w-full h-full object-cover" src="/images/dotachamp.webp">
+                        <img class="w-full h-full object-cover" src="/images/evilgenius.webp">
+                        <img class="w-full h-full object-cover" src="/images/dotachamp.webp">
+                        <img class="w-full h-full object-cover" src="/images/evilgenius.webp">
+                    </a-carousel>
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Engage in exciting community events.</p>
                     <Link :href="route('programs_projects')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
@@ -170,17 +155,12 @@ defineProps({
 
                 <!-- Work towards youth empowerment  -->
                 <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
-                    <!-- <img src="/images/goals.webp" alt="Goals" class="w-full max-w-xs md:max-w-sm h-auto" /> -->
-                    <n-carousel autoplay class="w-full h-80 ">
-                        <img class="w-full h-full object-cover"
-                            src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGgyZHVyNmEyd2ZsemVydDM2cGU5cjE5ZGZscmw1YzI3ZGx3ZnUydyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/0yuHYsk18VdtPc3ZYf/giphy.gif">
-                        <img class="w-full h-full object-cover"
-                            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWRlcHNpbGs3OHp0YnNnOGQ4aHoyMWwyNHUxMDQ2dXRneGFiaDQ3cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IZmvWyvNAH5kOtn6Kt/giphy.gif">
-                        <img class="w-full h-full object-cover"
-                            src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ29tdW10bXN3MmYybzU2YzAwZnE5Z3dqd3M2ZzFyZzhybTRmYnc3ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/chxbNhAk3vVXYYGo69/giphy.gif">
-                        <img class="w-full h-full object-cover"
-                            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG41ZTJnY25xcTJ2cjVrbnd4aHRxaGc1d2ZnZ3BjZGJwMzhkZndjdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/h8IcERBmFXChSSKlNI/giphy.gif">
-                    </n-carousel>
+                    <a-carousel autoplay class="w-full h-50 ">
+                        <img class="w-full h-full object-cover" src="/images/dotachamp.webp">
+                        <img class="w-full h-full object-cover" src="/images/evilgenius.webp">
+                        <img class="w-full h-full object-cover" src="/images/dotachamp.webp">
+                        <img class="w-full h-full object-cover" src="/images/evilgenius.webp">
+                    </a-carousel>
                     <p class="text-center font-bold text-lg text-gray-700 mt-4">Work towards youth empowerment.</p>
                     <Link :href="route('resources')"
                         class="bg-orange-600 text-white text-sans px-6 py-2 rounded-lg hover:bg-orange-700 flex items-center justify-center gap-2 mt-5">
@@ -195,18 +175,53 @@ defineProps({
                 </div>
             </section>
             <section>
-                <p class="text-base md:text-lg text-gray-800 max-w-2xl mx-auto text-lg mb-4">
+                <p class="text-base md:text-lg text-gray-800 max-w-2xl mx-auto mb-4 text-center">
                     Together, we grow, learn, and lead! SK WEB is a space where young
-                    leaders and the community unite to make meaningful changes. For concern,
+                    leaders and the community unite to make meaningful changes.<br> For concerns,
                     <Link :href="route('concerns')" class="text-orange-600 hover:text-orange-700 underline">click here
-                    </Link>
+                    </Link>.
                 </p>
             </section>
         </main>
 
         <!-- Footer -->
         <footer class="bg-gray-100 py-10 mt-12">
-            <div class="container mx-auto px-6 text-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="mt-10 text-center text-gray-600 text-sm">
+                    <p class="text-lg font-semibold">Some themes and designs inspired by</p>
+                    <p class="text-lg font-extrabold text-orange-600">Squid Game</p>
+
+                    <p class="mt-3 max-w-lg mx-auto">
+                        This website is a fan-made design influenced by the aesthetics of Squid Game.
+                        All rights belong to their respective owners.
+                    </p>
+
+                    <hr class="my-6 border-gray-400 opacity-50 w-2/3 mx-auto">
+
+                    <p class="text-lg font-semibold">Special Thanks To:</p>
+
+                    <div class="flex flex-wrap justify-center gap-4 mt-4">
+                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
+                            Ant Design Vue
+                        </span>
+                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
+                            Naive UI
+                        </span>
+                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
+                            UI Verse.io
+                        </span>
+                    </div>
+
+                    <p class="mt-6 text-sm text-gray-500 italic">
+                        This website is powered by <span class="font-bold text-gray-700">Barangay Solidarity
+                        </span> &
+                        <span class="font-bold text-gray-700">Commitment to the Community</span>.
+                    </p>
+                    <p class="mt-6 text-medium text-gray-500 italic">Made with 💖
+                        by <span class="font-bold text-gray-700">Teofredo M. Gamale</span></p>
+                </div>
+                <hr class="my-6 border-gray-400 opacity-50 w-2/3 mx-auto">
+
                 <p class="text-gray-800 text-lg">
                     &copy; 2024 - {{ dayjs().year() }} SK-OWAC Web. All rights reserved.
                 </p>
@@ -259,45 +274,11 @@ defineProps({
                         </li>
                     </ul>
                 </div>
-                <div class="mt-10 text-center text-gray-600 text-sm">
-                    <p class="text-lg font-semibold">Some theme and design inspired by</p>
-                    <p class="text-lg font-extrabold text-orange-600">Squid Game</p>
-
-                    <p class="mt-3 max-w-lg mx-auto">
-                        This website is a fan-based design influenced by the aesthetics of Squid Game.
-                        All rights belong to their respective owners.
-                    </p>
-
-                    <hr class="my-6 border-gray-400 opacity-50 w-2/3 mx-auto">
-
-                    <p class="text-lg font-semibold">Special Thanks To:</p>
-
-                    <div class="flex flex-wrap justify-center gap-4 mt-4">
-                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
-                            Ant Design Vue
-                        </span>
-                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
-                            Naive UI
-                        </span>
-                        <span class="bg-gray-200 px-4 py-1 rounded-full text-gray-700 font-medium shadow-sm">
-                            UI Verse.io
-                        </span>
-                    </div>
-
-                    <p class="mt-6 text-sm text-gray-500 italic">
-                        This website is powered by <span class="font-bold text-gray-700">Barangay Solidarity
-                        </span> &
-                        <span class="font-bold text-gray-700">Commitment to the Community</span>.
-                    </p>
-                    <p class="mt-6 text-medium text-gray-500 italic">Made with <span
-                            class="font-bold text-gray-700">LOVE</span>
-                        by <span class="font-bold text-gray-700">Teofredo M. Gamale</span></p>
-                </div>
-
             </div>
         </footer>
     </div>
 </template>
+
 <style scoped>
 .carousel-img {
     width: 100%;

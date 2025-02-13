@@ -13,7 +13,6 @@
     "axios": "^1.7.4",
     "concurrently": "^9.0.1",
     "laravel-vite-plugin": "^1.2.0",
-    "naive-ui": "^2.41.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.2.1",
     "vfonts": "^0.0.3",
@@ -21,6 +20,7 @@
     "vue": "^3.4.0"
   },
   "dependencies": {
+    "ant-design-vue": "^4.2.6",
     "dayjs": "^1.11.13",
     "prettier": "^3.4.2"
   }

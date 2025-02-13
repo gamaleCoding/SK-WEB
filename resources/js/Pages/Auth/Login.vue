@@ -103,14 +103,14 @@ const submit = () => {
                                 class="text-sm text-gray-600 underline hover:text-gray-900 focus:ring-2 focus:ring-gray-500">
                             Forgot your password?
                             </Link>
-                            <Link :href="route('register')"
-                                class="text-sm text-gray-600 underline hover:text-gray-900 focus:ring-2 focus:ring-gray-500">
-                            Don't have account?</Link>
 
                             <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }"
                                 :disabled="form.processing">
                                 Log in
                             </PrimaryButton>
+                            <Link :href="route('welcome')" class=" ms-4 text-red-600 font-semibold text-lg hover:text-red-700">
+                                Cancel
+                            </Link>
                         </div>
                     </form>
                 </div>

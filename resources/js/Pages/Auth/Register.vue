@@ -4,7 +4,8 @@ import InputError from '@/Components/InputError.vue'
 import InputLabel from '@/Components/InputLabel.vue'
 import PrimaryButton from '@/Components/PrimaryButton.vue'
 import TextInput from '@/Components/TextInput.vue'
-import { Head, Link, useForm } from '@inertiajs/vue3'
+import { Head, Link, router, useForm } from '@inertiajs/vue3'
+import { message, notification } from 'ant-design-vue'
 
 const form = useForm({
     name: '',
@@ -14,8 +15,22 @@ const form = useForm({
 })
 
 const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
+    form.post(route('submit_admin'), {
+        onSuccess: (page) => {
+            if (page.props.flash.success) {
+                notification.success({
+                    description: page.props.flash.success
+                });
+                form.reset();
+            } else if(page.props.flash.error) {
+                notification.error({
+                    description: page.props.flash.error
+                });
+            }
+        },
+        onFinish: () => {
+            router.get(route('dashboard'));
+        },
     })
 }
 </script>
@@ -52,7 +67,7 @@ const submit = () => {
                             <Link :href="route('welcome')">Back to Welcome Page</Link>
                         </button> -->
                         <!-- sk logo  -->
-                        <Link :href="route('welcome')" class="flex justify-center items-center direction-column">
+                        <Link :href="route('dashboard')" class="flex justify-center items-center direction-column">
                         <img src="/images/sk.webp" class="w-12 h-12" />
                         </Link>
                         <div class="mt-2">
@@ -96,12 +111,14 @@ const submit = () => {
 
                         <!-- Register Button -->
                         <div class="mt-4 flex items-center justify-between">
-                            <Link class="text-gray-700 underline" :href="route('login')"> Already have account?
-                            </Link>
                             <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }"
                                 :disabled="form.processing">
                                 Register
                             </PrimaryButton>
+                            <Link :href="route('dashboard')"
+                                class="text-red-600 font-semibold text-lg hover:text-red-700">
+                            Cancel
+                            </Link>
                         </div>
 
                     </form>

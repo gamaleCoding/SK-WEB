@@ -39,6 +39,8 @@ onUnmounted(() => {
 </script>
 
 <template>
+
+
     <div>
         <!-- Scroll Up button  -->
         <button @click="scrollUp" v-if="scrollButton" class="button">

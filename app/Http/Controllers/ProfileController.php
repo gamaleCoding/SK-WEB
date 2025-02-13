@@ -18,6 +18,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
+        // dd();
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
@@ -59,5 +60,9 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function register(){
+        dd();
     }
 }

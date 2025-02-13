@@ -25,11 +25,34 @@ const showingNavigationDropdown = ref(false)
                                 <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    Home
+                                </NavLink>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    About
+                                </NavLink>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Project
+                                </NavLink>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Events
+                                </NavLink>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Updates
+                                </NavLink>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Resources
+                                </NavLink>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Council
+                                </NavLink>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Gallery
+                                </NavLink>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Get Involved
                                 </NavLink>
                             </div>
                         </div>
@@ -56,9 +79,40 @@ const showingNavigationDropdown = ref(false)
 
                                     <template #content>
                                         <DropdownLink :href="route('profile.edit')"> Profile </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            Home
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            About
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            Projects
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            add_admin
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            Updates
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            Resources
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            Council
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            Gallery
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            Get Involved
+                                        </DropdownLink>
+                                        <DropdownLink :href="route('add_admin')" :active="route().current('add_admin')">
+                                            Add Admin
+                                        </DropdownLink>
                                         <DropdownLink :href="route('logout')" method="post" as="button">
                                             Log Out
                                         </DropdownLink>
+
                                     </template>
                                 </Dropdown>
                             </div>
@@ -92,7 +146,7 @@ const showingNavigationDropdown = ref(false)
                 }" class="sm:hidden">
                     <div class="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                            Home
                         </ResponsiveNavLink>
                     </div>
 
@@ -108,10 +162,21 @@ const showingNavigationDropdown = ref(false)
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <ResponsiveNavLink :href="route('profile.edit')"> Profile </ResponsiveNavLink>
-                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Home </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> About </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Profile </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Events </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Updates </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Resources </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Council </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Gallery </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Get Involved </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('profile.edit')" :active="route().current('profile.edit')"> Profile </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('add_admin')">Add Admin</ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('logout')" method="post" as="button">Log Out
                             </ResponsiveNavLink>
+
+
                         </div>
                     </div>
                 </div>

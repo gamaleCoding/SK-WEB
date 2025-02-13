@@ -20,6 +20,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): Response
     {
+        // dd();
         return Inertia::render('Auth/Register');
     }
 
@@ -30,9 +31,10 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -41,11 +43,21 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        if ($user) {
+            return redirect()->back()->with(
+                'success',
+                'New admin added successfully'
+            );
+        } else {
+            return redirect()->back()->with(
+                'error',
+                'Sorry cannot add new admin'
+            );
+        }
+        // event(new Registered($user));
 
-        event(new Registered($user));
+        // Auth::login($user);
 
-        Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+        // return redirect(route('dashboard'));
     }
 }

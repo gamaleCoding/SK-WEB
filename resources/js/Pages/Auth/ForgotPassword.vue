@@ -41,11 +41,8 @@ const submit = () => {
                 <!-- Right Side: Reset Password Form -->
                 <div class="flex flex-col justify-center items-center">
                     <div class="mb-6 text-center">
-                        <div class="text-orange-600 font-bold">
-                            <Link :href="route('welcome')">Back to Welcome Page</Link>
-                        </div>
                         <!-- sk logo -->
-                        <div class="flex justify-center items-center direction-column mt-10">
+                        <div class="flex justify-center items-center direction-column">
                             <img src="/images/sk.webp" class="w-12 h-12" />
                         </div>
                         <div class="mt-2">
@@ -72,7 +69,7 @@ const submit = () => {
                             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                                 Email Password Reset Link
                             </PrimaryButton>
-                            <Link class="text-red-600 font-bold text-lg" :href="route('welcome')">
+                            <Link class="text-red-600 hover:text-red-700 font-bold text-lg" :href="route('login')">
                             Cancel
                             </Link>
                         </div>

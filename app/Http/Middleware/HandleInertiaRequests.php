@@ -34,6 +34,24 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'flash' => function () use ($request) {
+                return [
+                    'success' => $request->session()->get('success'),
+                    'status' => $request->session()->get('status'),
+                    'error' => $request->session()->get('error'),
+                    'msg' => $request->session()->get('msg'),
+                    'title' => $request->session()->get('title'),
+                    'type' => $request->session()->get('type'),
+                    'description' => $request->session()->get('description'),
+                    'data' => $request->session()->get('data') ?? [],
+
+                    //San Changes
+                    'stream' => $request->session()->get('stream'),
+                    'countSession' => $request->session()->get('countSession') ?? 0,
+                    'denominationSession' => $request->session()->get('denominationSession') ?? 0,
+                    'scanGc' => $request->session()->get('scanGc') ?? [],
+                ];
+            },
         ];
     }
 }
