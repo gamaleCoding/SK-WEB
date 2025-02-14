@@ -189,7 +189,7 @@ defineProps({
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div class="mt-10 text-center text-gray-600 text-sm">
                     <p class="text-lg font-semibold">Some themes and designs inspired by</p>
-                    <p class="text-lg font-extrabold text-orange-600">Squid Game</p>
+                    <p class="text-lg font-extrabold text-orange-600 italic">Squid Game</p>
 
                     <p class="mt-3 max-w-lg mx-auto">
                         This website is a fan-made design influenced by the aesthetics of Squid Game.

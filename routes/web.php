@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ConcernsController;
+use App\Http\Controllers\ManageImagesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+    // ADD ADMIN ROUTES
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [RegisteredUserController::class, 'create'])->name('add_admin');
     Route::post('/add-admin', [RegisteredUserController::class, 'store'])->name('submit_admin');
+});
+
+    // MANAGE IMAGES ROUTES
+Route::middleware('auth')->group(function () {
+    Route::get('/manage-images', [ManageImagesController::class, 'manage_images'])->name('manage_images');
+    Route::post('/upload-images', [ManageImagesController::class, 'upload_images'])->name('upload_images');
+    Route::get('/display/images', [ManageImagesController::class, 'display_images'])->name('display_images');
+    Route::delete('/delete-image',[ManageImagesController::class, 'delete_image'])->name('delete_image');
 });
 
 
@@ -42,7 +52,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-
+//////////////////////// BELOW ARE THE VIEWERS PAGE ROUTE LISTS ///////////////////////////////////
 
 // WELCOME ROUTES
 Route::get('/welcome', function () {
