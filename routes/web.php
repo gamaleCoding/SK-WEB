@@ -43,12 +43,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/upload-images', [ManageImagesController::class, 'upload_images'])->name('upload_images');
     Route::get('/display/images', [ManageImagesController::class, 'display_images'])->name('display_images');
     Route::delete('/delete-image',[ManageImagesController::class, 'delete_image'])->name('delete_image');
+    Route::put('/update-image', [ManageImagesController::class, 'update_image'])->name('update_image');
+    Route::get('search-images', [ManageImagesController::class, 'search_images'])->name('search_images');
+    Route::get('filter-by-date', [ManageImagesController::class, 'filterBy_date'])->name('filterBy_date');
 });
-
-
-
-
-
 
 
 

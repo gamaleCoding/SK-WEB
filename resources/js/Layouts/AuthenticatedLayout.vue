@@ -27,6 +27,9 @@ const showingNavigationDropdown = ref(false)
                             </div>
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                    Dashboard
+                                </NavLink>
                                 <NavLink :href="route('manage_images')" :active="route().current('manage_images')">
                                     Content Management
                                 </NavLink>
@@ -94,6 +97,9 @@ const showingNavigationDropdown = ref(false)
                     hidden: !showingNavigationDropdown,
                 }" class="sm:hidden">
                     <div class="space-y-1 pb-3 pt-2">
+                        <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                            Dashboard
+                        </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('manage_images')" :active="route().current('manage_images')">
                             Content Management
                         </ResponsiveNavLink>
@@ -138,7 +144,7 @@ const showingNavigationDropdown = ref(false)
         <footer class="bg-white py-10 mb-0">
             <div class="container mx-auto px-6 text-center">
                 <p class="text-gray-800 text-lg">
-                    &copy; 2024 - {{ dayjs().year() }} SK Web. All rights reserved.
+                    &copy; 2024 - {{ dayjs().year() }} SK-OWAC Web. All rights reserved.
                 </p>
                 <div>
                     <ul class="flex justify-center mt-5 space-x-5">
