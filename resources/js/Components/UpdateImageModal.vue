@@ -39,7 +39,7 @@ const handleOk = async () => {
     } catch (error) {
         console.error('Failed to update image', error);
         notification.error({
-            description: 'Failed to update image. Please input description first.',
+            description: 'Please add some description first before proceeding.',
         });
     }
 };
@@ -72,8 +72,9 @@ watch(() => props.image, (newImage) => {
                 </template>
             </div>
 
-            <a-form-item label="Description" class="w-full max-w-md">
-                <a-textarea v-model:value="description" placeholder="Enter image description" :rows="4"
+            <a-form-item class="w-full max-w-md">
+                <p class="text-gray-700 font-medium">Description:</p>
+                <a-textarea v-model:value="description" placeholder="Enter image or video description" :rows="4"
                     class="w-full" />
             </a-form-item>
         </div>

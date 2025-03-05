@@ -33,6 +33,18 @@ const showingNavigationDropdown = ref(false)
                                 <NavLink :href="route('manage_images')" :active="route().current('manage_images')">
                                     Content Management
                                 </NavLink>
+                                <NavLink :href="route('manage_images')" :active="route().current('manage_images')">
+                                    User Management
+                                </NavLink>
+                                <NavLink :href="route('manage_images')" :active="route().current('manage_images')">
+                                    Community Engagement
+                                </NavLink>
+                                <NavLink :href="route('manage_images')" :active="route().current('manage_images')">
+                                    Site Setting
+                                </NavLink>
+                                <NavLink :href="route('manage_images')" :active="route().current('manage_images')">
+                                    Reports & Analytics
+                                </NavLink>
                             </div>
                         </div>
 
@@ -102,6 +114,18 @@ const showingNavigationDropdown = ref(false)
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('manage_images')" :active="route().current('manage_images')">
                             Content Management
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('manage_images')" :active="route().current('manage_images')">
+                            User Management
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('manage_images')" :active="route().current('manage_images')">
+                            Community Engagement
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('manage_images')" :active="route().current('manage_images')">
+                            Site Setting
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('manage_images')" :active="route().current('manage_images')">
+                            Report Analytics
                         </ResponsiveNavLink>
                     </div>
 

@@ -2,7 +2,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { onMounted, ref, watch } from 'vue';
 import { notification, Modal } from 'ant-design-vue';
-import { UploadOutlined, DeleteOutlined, EditOutlined, ExclamationCircleOutlined } from '@ant-design/icons-vue';
+import { UploadOutlined, DeleteOutlined, EditOutlined, ExclamationCircleOutlined, MoreOutlined } from '@ant-design/icons-vue';
 import axios from 'axios';
 import { Head } from '@inertiajs/vue3';
 import { createVNode } from 'vue';
@@ -36,7 +36,9 @@ const handleUpload = async () => {
         });
 
         if (response.data.success) {
-            notification.success({ description: response.data.message });
+            notification.success({
+                description: response.data.message
+            });
             fileList.value = [];
             await fetchImages();
         } else {
@@ -64,9 +66,9 @@ onMounted(fetchImages);
 // Delete function
 const deleteImage = async (imageId) => {
     Modal.confirm({
-        title: 'Are you sure?',
+        title: 'Confirmation?',
         icon: createVNode(ExclamationCircleOutlined),
-        content: 'This action cannot be undone.',
+        content: 'Are you sure to delete this file?',
         async onOk() {
             try {
                 const response = await axios.delete(route('delete_image', { id: imageId }));
@@ -88,7 +90,7 @@ const openUpdateModal = (image) => {
     selectedImage.value = image;
     updateModalOpen.value = true;
 };
-
+//  Format the date created
 const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString('en-US', {
         year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
@@ -177,19 +179,70 @@ watch(dateValue, (newValue) => {
                             <div v-for="image in images" :key="image.id"
                                 class="p-4 border rounded-lg shadow-md hover:shadow-lg transition-shadow">
                                 <!-- Conditionally between images or videos  -->
+
                                 <template
                                     v-if="image.file_path.endsWith('.mp4') || image.file_path.endsWith('.mov') || image.file_path.endsWith('.avi')">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-gray-500 italic">Posted by:
+                                                <span class="text-gray-600">{{ image.created_by }}</span>
+                                            </p>
+                                            <p class="text-gray-500 italic">Posted on:
+                                                <span class="text-gray-600">{{ formatDate(image.created_at) }}</span>
+                                            </p>
+                                        </div>
+
+                                        <a-dropdown class="flex items-center">
+                                            <template #overlay>
+                                                <a-menu @click="handleMenuClick">
+                                                    <a-menu-item @click="openUpdateModal(image.id)"
+                                                        key="1">Update</a-menu-item>
+                                                    <a-menu-item @click="deleteImage(image.id)"
+                                                        key="2">Delete</a-menu-item>
+                                                    <a-menu-item key="3">Add Comment</a-menu-item>
+                                                </a-menu>
+                                            </template>
+                                            <a-button>
+                                                <MoreOutlined />
+                                            </a-button>
+                                        </a-dropdown>
+                                    </div>
+
                                     <video :src="`/storage/${image.file_path}`" autoplay controls
-                                        class="w-full h-48 object-cover rounded-md aspect-vide0">
+                                        class="w-full h-48 object-cover rounded-md aspect-video mb-5 mt-5">
                                     </video>
+
+                                    <p class="text-gray-700 text-lg text-center">{{ image.image_name }}</p>
                                 </template>
+
                                 <template v-else>
+                                    <div>
+                                        <a-dropdown class="flex">
+                                            <template #overlay>
+                                                <a-menu @click="handleMenuClick">
+                                                    <a-menu-item key="1">Update</a-menu-item>
+                                                    <a-menu-item key="2">Delete</a-menu-item>
+                                                    <a-menu-item key="3">Add Comment</a-menu-item>
+                                                </a-menu>
+                                            </template>
+                                            <a-button>
+                                                <MoreOutlined />
+                                                <DownOutlined />
+                                            </a-button>
+                                        </a-dropdown>
+                                        <p class="text-gray-500 italic">Posted by: <span class="text-gray-600">{{
+                                            image.created_by }}</span></p>
+                                        <p class="text-gray-500 italic">Posted on: <span class="text-gray-600">{{
+                                            formatDate(image.created_at) }}</span>
+                                        </p>
+                                    </div>
                                     <img :src="`/storage/${image.file_path}`" alt="Uploaded Image"
-                                        class="w-full h-48 object-cover rounded-md mb-2">
+                                        class="w-full h-48 object-cover rounded-md mb-5 mt-5">
+                                    <p class="text-gray-700 text-lg text-center">{{ image.image_name }}</p>
+
                                 </template>
                                 <!-- Files Details  -->
-                                <p class="text-gray-600 text-sm">{{ image.image_name }}</p>
-                                <p class="text-gray-500 text-xs mt-2">Uploaded: {{ formatDate(image.created_at) }}</p>
+
                                 <!-- Action buttons  -->
                                 <div class="flex justify-end space-x-2 mt-3">
                                     <a-button type="danger" @click="deleteImage(image.id)"

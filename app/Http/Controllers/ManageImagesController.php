@@ -44,7 +44,7 @@ class ManageImagesController extends Controller
                 $image = ManageImages::create([
                     'file_path' => $filePath,
                     'image_name' => $originalName,
-                    'created_by' => Auth::user()->id,
+                    'created_by' => Auth::user()->name,
                 ]);
 
                 $uploadedImages[] = $image;
